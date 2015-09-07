@@ -1,0 +1,230 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta charset="utf-8" />
+	<title>{{title}}</title>
+	<meta name="description" content="overview stats" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+	<link rel="stylesheet" href="/styles/admin/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="/styles/admin/css/font-awesome.min.css" />
+	<script src="/styles/admin/js/jquery.min.js"></script>
+	<!-- page specific plugin styles -->
+	<link rel="stylesheet" href="/styles/admin/css/fullcalendar.css" />
+	<link rel="stylesheet" href="/styles/admin/css/jquery-ui.custom.min.css" />
+	<link rel="stylesheet" href="/styles/admin/css/chosen.css" />
+	<link rel="stylesheet" href="/styles/admin/css/datepicker.css" />
+	<link rel="stylesheet" href="/styles/admin/css/bootstrap-timepicker.css" />
+	<link rel="stylesheet" href="/styles/admin/css/daterangepicker.css" />
+	<link rel="stylesheet" href="/styles/admin/css/bootstrap-datetimepicker.css" />
+	<link rel="stylesheet" href="/styles/admin/css/colorpicker.css" />
+	<link rel="stylesheet" href="/styles/admin/css/select2.css" />
+	<link rel="stylesheet" href="/styles/admin/css/colorbox.css" />
+	<link rel="stylesheet" href="/styles/admin/css/ui.jqgrid.css" />
+	<link rel="stylesheet" href="/styles/admin/css/jquery-ui.min.css" />
+	<link rel="stylesheet" href="/styles/admin/css/jquery.gritter.css" />
+	<link rel="stylesheet" href="/styles/admin/css/bootstrap-editable.css" />
+	<!-- text fonts -->
+	<link rel="stylesheet" href="/styles/admin/css/css.css" />
+
+	<!-- ace styles -->
+	<link rel="stylesheet" href="/styles/admin/css/ace.min.css" />
+
+<!--[if lte IE 9]>
+<link rel="stylesheet" href="/styles/admin/css/ace-part2.min.css" />
+<![endif]-->
+<link rel="stylesheet" href="/styles/admin/css/ace-skins.min.css" />
+<link rel="stylesheet" href="/styles/admin/css/ace-rtl.min.css" />
+
+<!--[if lte IE 9]>
+<link rel="stylesheet" href="/styles/admin/css/ace-ie.min.css" />
+<![endif]-->
+
+<!-- inline styles related to this page -->
+
+<!-- ace settings handler -->
+<script src="/styles/admin/js/ace-extra.min.js"></script>
+
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+
+<!--[if lte IE 8]>
+<script src="/styles/admin/js/html5shiv.js"></script>
+<script src="/styles/admin/js/respond.min.js"></script>
+<![endif]-->
+<link rel="stylesheet" href="/styles/admin/css/more.css" />
+
+</head>
+<body class="no-skin">
+	<div id="navbar" class="navbar navbar-default">
+		<script type="text/javascript">
+		try{ ace.settings.check('navbar' , 'fixed') }catch(e){ }
+		</script>
+
+		<div class="navbar-container" id="navbar-container">
+			<button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler">
+				<span class="sr-only">Toggle sidebar</span>
+
+				<span class="icon-bar"></span>
+
+				<span class="icon-bar"></span>
+
+				<span class="icon-bar"></span>
+			</button>
+
+			<div class="navbar-header pull-left">
+				<a href="#" class="navbar-brand">
+					<small>
+						<i class="fa fa-leaf"></i>
+						Admin Panel
+					</small>
+				</a>
+			</div>
+
+			<div class="navbar-buttons navbar-header pull-right" role="navigation">
+				<ul class="nav ace-nav">
+					<li class="light-blue">
+						<a data-toggle="dropdown" href="index.html#" class="dropdown-toggle">
+							<span class="user-info">
+								<small>Welcome,</small>
+								{{fullname}}
+							</span>
+
+							<i class="ace-icon fa fa-caret-down"></i>
+						</a>
+
+						<ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+							<li>
+								<a href="#">
+									<i class="ace-icon fa fa-cog"></i>
+									Cài đặt hệ thống
+								</a>
+							</li>
+
+							<li>
+								<a href="#">
+									<i class="ace-icon fa fa-user"></i>
+									Đổi mật khẩu
+								</a>
+							</li>
+
+							<li class="divider"></li>
+							<li>
+								<a href="logout.html">
+									<i class="ace-icon fa fa-power-off"></i>
+									Đăng xuất
+								</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div><!-- /.navbar-container -->
+	</div>
+
+	<div class="main-container" id="main-container">
+		<script type="text/javascript">
+		try{ ace.settings.check('main-container' , 'fixed') }catch(e){ }
+		</script>
+
+		<div id="sidebar" class="sidebar responsive">
+			{% block left %}{% endblock %}
+		</div>
+
+		<div class="main-content">
+			{% block content %}{% endblock %}
+		</div><!-- /.main-content -->
+
+		<div class="footer">
+			<div class="footer-inner">
+				<div class="footer-content" style="text-align:left;font-size:12px;">
+					<span class="bigger-120">
+						&#169; Copyright <a href="http://phuongnamdesign.com" target="_blank">Phuong Nam Design</a>
+					</span>
+				</div>
+			</div>
+		</div>
+
+		<a href="index.html#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+			<i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+		</a>
+	</div><!-- /.main-container -->
+
+	<!-- basic scripts -->
+	<!--[if !IE]> -->
+	<script src="/styles/admin/js/jquery.min.js"></script>
+
+	<!-- <![endif]-->
+
+<!--[if IE]>
+<script src="/styles/admin/js/jquery.min.js"></script>
+<![endif]-->
+
+<!--[if !IE]> -->
+<script type="text/javascript">
+window.jQuery || document.write("<script src='/styles/admin/js/jquery.min.js'>"+"<"+"/script>");
+</script>
+
+<!-- <![endif]-->
+
+<!--[if IE]>
+<script type="text/javascript">
+window.jQuery || document.write("<script src='/styles/admin/js/jquery1x.min.js'>"+"<"+"/script>");
+</script>
+<![endif]-->
+<script type="text/javascript">
+if('ontouchstart' in document.documentElement) document.write("<script src='/styles/admin/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+</script>
+<script src="/styles/admin/js/bootstrap.min.js"></script>
+<!--[if lte IE 8]>
+<script src="/styles/admin/js/excanvas.min.js"></script>
+<![endif]-->
+<script src="/styles/admin/js/jquery-ui.custom.min.js"></script>
+<script src="/styles/admin/js/jquery-ui.min.js"></script>
+<script src="/styles/admin/js/jquery.ui.touch-punch.min.js"></script>
+<script src="/styles/admin/js/fullcalendar.min.js"></script>
+<script src="/styles/admin/js/bootbox.min.js"></script>
+<script src="/styles/admin/js/chosen.jquery.min.js"></script>
+<script src="/styles/admin/js/fuelux.spinner.min.js"></script>
+<script src="/styles/admin/js/bootstrap-datepicker.min.js"></script>
+<script src="/styles/admin/js/bootstrap-timepicker.min.js"></script>
+<script src="/styles/admin/js/moment.min.js"></script>
+<script src="/styles/admin/js/daterangepicker.min.js"></script>
+<script src="/styles/admin/js/bootstrap-datetimepicker.min.js"></script>
+<script src="/styles/admin/js/bootstrap-colorpicker.min.js"></script>
+<script src="/styles/admin/js/jquery.knob.min.js"></script>
+<script src="/styles/admin/js/jquery.autosize.min.js"></script>
+<script src="/styles/admin/js/jquery.inputlimiter.1.3.1.min.js"></script>
+<script src="/styles/admin/js/jquery.maskedinput.min.js"></script>
+<script src="/styles/admin/js/bootstrap-tag.min.js"></script>
+<script src="/styles/admin/js/fuelux.wizard.min.js"></script>
+<script src="/styles/admin/js/jquery.validate.min.js"></script>
+<script src="/styles/admin/js/additional-methods.min.js"></script>
+<script src="/styles/admin/js/select2.min.js"></script>
+<script src="/styles/admin/js/jquery.colorbox-min.js"></script>
+<script src="/styles/admin/js/jquery.hotkeys.min.js"></script>
+<script src="/styles/admin/js/bootstrap-wysiwyg.min.js"></script>
+<script src="/styles/admin/js/jquery.slimscroll.min.js"></script>
+<script src="/styles/admin/js/jquery.jqGrid.min.js"></script>
+<script src="/styles/admin/js/grid.locale-en.js"></script>
+<script src="/styles/admin/js/jquery.nestable.min.js"></script>
+<script src="/styles/admin/js/jquery.gritter.min.js"></script>
+<script src="/styles/admin/js/jquery.easypiechart.min.js"></script>
+<script src="/styles/admin/js/bootstrap-editable.min.js"></script>
+<script src="/styles/admin/js/ace-editable.min.js"></script>
+<script src="/styles/admin/js/jquery.dataTables.min.js"></script>
+<script src="/styles/admin/js/jquery.dataTables.bootstrap.js"></script>
+<script src="/styles/admin/js/markdown.min.js"></script>
+<script src="/styles/admin/js/bootstrap-markdown.min.js"></script>
+<script src="/styles/admin/js/ace-elements.min.js"></script>
+<script src="/styles/admin/js/ace.min.js"></script>
+<script src="/styles/admin/js/alert.js"></script>
+<script type="text/javascript" src="/scripts/ckfinder/ckfinder.js"></script>
+<script type="text/javascript" src="/scripts/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="/scripts/ckeditor/jqueryeditor.js"></script>
+<script type="text/javascript" src="/scripts/editor.js"></script>
+<script src="/styles/admin/js/javascript.lib.js"></script>
+
+</body>
+</html>

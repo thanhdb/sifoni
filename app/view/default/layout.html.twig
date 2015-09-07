@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{{title|capitalize|e }}</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<link rel="stylesheet" href="./styles/css/bootstrap.min.css">
+	<link rel="stylesheet" href="./styles/css/styles.css">
+	<script type="text/javascript" src="./styles/js/jquery.js"></script>
+</head>
+<body>
+	<div class='container'>
+		<nav class='navbar navbar-inverse'>
+			{% block menu %}{% endblock %}
+		</nav>
+		<div class='container'>
+			<div class='row'>
+				<div class='col-md-9'>
+					{% block content %}{% endblock %}
+				</div>
+				<div class='col-md-3'>
+					{% block contentleft %}{% endblock %}
+				</div>
+			</div>
+		</div>
+		
+	</div>
+	<footer class="navbar text-center">
+		Sản xuất năm 2015 ^.^ <a href="">Maria olala tại Japan</a>
+	</footer>
+</body>
+</html>

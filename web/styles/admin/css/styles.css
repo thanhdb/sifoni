@@ -1,0 +1,22 @@
+/* Nothing here yet */
+.text-right {
+    text-align: right !important;
+}
+
+.text-center {
+    text-align: center !important;
+}
+#form-login-admin{
+   float:left;
+   left:400px;
+   margin-top: 80px;
+}
+.notification{
+	color: red;
+	margin-bottom: 10px;
+}
+.title{
+	font-size: 23px;
+	font-family: serif;
+	margin-bottom: 10px;
+}
