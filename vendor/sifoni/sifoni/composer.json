@@ -1,0 +1,38 @@
+{
+    "name": "sifoni/sifoni",
+    "description": "PHP Web Framework based on Symfony2 Components & Silex Framework",
+    "minimum-stability": "stable",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "KhanhIceTea",
+            "email": "khanhicetea@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.9",
+        "silex/silex": "~1.3",
+        "symfony/form": "~2.7,<2.8",
+        "symfony/security-csrf": "~2.7,<2.8",
+        "symfony/security": "~2.7,<2.8",
+        "symfony/validator": "~2.7,<2.8",
+        "symfony/translation": "~2.7,<2.8",
+        "symfony/twig-bridge": "~2.7,<2.8",
+        "monolog/monolog": "~1.0",
+        "twig/twig": "~1.17",
+        "silex/web-profiler": "~1.0",
+        "swiftmailer/swiftmailer": "~5.4",
+        "illuminate/database": "~5.1",
+        "illuminate/events": "~5.1",
+        "illuminate/container": "~5.1",
+        "illuminate/cache": "~5.1"
+    },
+    "require-dev": {
+        "symfony/monolog-bridge": "~2.7,<2.8"
+    },
+    "autoload": {
+        "psr-0": {
+            "Sifoni": "src/"
+        }
+    }
+}

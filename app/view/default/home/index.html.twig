@@ -1,49 +1,52 @@
 {% extends 'default/layout/index.html.twig' %}
 {% block content %}
-<h2>BÀI VIẾT MỚI NHẤT</h2>
-{% for p in post %} 
-<div class="row" style="margin-top:10px;border-width:1px;border-bottom:solid;padding-bottom:25px;padding-top:10px;">
-	<div class="col-md-2">
-		<a href="#">
-			<img class="img-responsive" src="{{p.images}}">
-		</a>
+	<div class="about">
+		<div class="container">
+			<div class="about-main">
+				<div class="col-md-9 about-left">
+					<div class="about-one">
+						<p>Find The Most</p>
+						<h3>Coffee of the month</h3>
+					</div>
+					<div class="about-two">
+						<a href="#"><img src="./styles/images/c-1.jpg" alt="" /></a>
+						<p>Posted by on 10 feb, 2015</p>
+						<p>Phasellus fringilla enim nibh, ac pharetra nulla vestibulum ac. Donec tempor fermentum felis, non placerat sem ultrices ut. Nam molestie nunc nec felis hendrerit, in pulvinar arcu mollis. Quisque eget purus nec velit venenatis tincidunt vitae ac massa. Proin vel ornare tellus. Duis consectetur gravida tellus ut varius. Aenean tellus massa, laoreet ut euismod et, pretium id ex. Mauris hendrerit suscipit hendrerit.</p>
+						<p>Quisque ultrices ligula a nisl porttitor, vitae porta tortor eleifend. Nulla nec imperdiet ipsum, ut cursus mauris. Proin ut sodales sem, quis vestibulum libero. Proin tempor venenatis congue. Phasellus mollis massa sit amet pharetra consequat. Aliquam quis lacus at sapien tempor semper. Sed ultrices et metus et elementum. Nunc sed justo at erat consequat mollis et eu lectus.</p>
+						<div class="about-btn">
+							<a href="">Read More</a>
+						</div>
+						<ul>
+							<li><p>Share : </p></li>
+							<li><a href="#"><span class="fb"> </span></a></li>
+							<li><a href="#"><span class="twit"> </span></a></li>
+							<li><a href="#"><span class="pin"> </span></a></li>
+							<li><a href="#"><span class="rss"> </span></a></li>
+							<li><a href="#"><span class="drbl"> </span></a></li>
+						</ul>
+					</div>	
+					<div class="about-tre">
+						<div class="a-1">
+						{% for cont in content %}
+							<div class="col-md-6 abt-left">
+								<a href="index.php?c=index&m=showpost&id={{ cont['id'] }}"><img src="{{ cont['images'] }}" style="width: 350px; height: 250px" /></a>
+								<h6>Find The Most</h6>
+								<h3><a href="#">{{ cont['title'] }}</a></h3>
+								<p>{{ cont['description'] }}</p>
+								<label>{{ cont['write_time'] }}</label>
+							</div>
+						{% endfor %}
+							<div class="clearfix"></div>
+						
+						</div> 
+
+					</div>
+					
+				</div>
+				
+				<div class="clearfix"></div>			
+			</div>		
+		</div>
 	</div>
-	<div class="col-md-10">
-		<h3>{{p.title}}</h3>
-		<span class="post-date" itemprop="datePublished"><i class="fa fa-clock-o"></i>{{p.datetime}}
-		</span>
-		<p style="margin-top:5px;">{{p.description}}</p>
-		<a class="btn btn-primary" href="#">Xem Bài <span class="glyphicon glyphicon-chevron-right"></span></a>
-	</div>
-</div>
-{% endfor %}
-<div class="clear"></div>
-<!-- Pagination -->
-<div class="row text-center">
-	<div class="col-lg-12">
-		<ul class="pagination">
-			<li>
-				<a href="#">&laquo;</a>
-			</li>
-			<li class="active">
-				<a href="#">1</a>
-			</li>
-			<li>
-				<a href="#">2</a>
-			</li>
-			<li>
-				<a href="#">3</a>
-			</li>
-			<li>
-				<a href="#">4</a>
-			</li>
-			<li>
-				<a href="#">5</a>
-			</li>
-			<li>
-				<a href="#">&raquo;</a>
-			</li>
-		</ul>
-	</div>
-</div>
+
 {% endblock %}

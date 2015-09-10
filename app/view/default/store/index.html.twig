@@ -1,0 +1,28 @@
+{% extends 'default/layout/index.html.twig' %}
+{% block content %}
+<div class="single">
+	<div class="container">
+			<div class="single-top">
+			<div class="col-md-9">
+			<div class="about-tre">
+						<div class="a-1">
+						<ul class="home">
+						{% for prod in product  %}
+							<li>
+								<a href="/store/detail/{{ prod['id'] }}" title="">
+									<img src="{{ prod['image'] }}" alt="" width="240px" style="height: 200px">
+									<h3>{{ prod['name'] }}</h3>
+									<strong>{{ "$" ~ prod['price'] ~ " / pound" }}</strong>
+									<button type="button" class="btn">Details</button>
+								</a>
+							</li>
+						{% endfor %}
+						</ul>
+						</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+<!-- </div> -->
+{% endblock %}
