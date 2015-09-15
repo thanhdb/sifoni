@@ -68,19 +68,18 @@
     
 
 {% block sidebar %}
-
 {% if app.session.has('logged') %}
-{% if error is defined %}
-<div class="alert alert-warning" style="color:red">
-    {{error}}
-</div>
-{% endif %}
+        {% if error is defined %}
+        <div class="alert alert-warning" style="color:red">
+            {{error}}
+        </div>
+        {% endif %}
 <!-- <div class="col-md-3 about-right heading"> -->
 	<div class="abt-1">
 		<div class="abt-one">
     
 			<h3><a href="#">Welcome <strong>{{ app.session.get('logged')["name"] }}</strong></a></h3>
-			<h3><a href="index.php?c=store&m=total">Your Cart</a></h3>
+			<h3><a href="/store/cart">Your Cart</a></h3>
 			<h3><a href="/auth/logout">Logout</a></h3>
 		</div>
 	</div>
@@ -92,7 +91,6 @@
 			<form action="/auth/login" method="POST" role="form" style="width: 80%; margin-left: 10%">
 				<legend>Sign in</legend>
 				<div class="form-group">
-					<!-- <label for="">Username</label> -->
 					<input type="email" name="email" class="form-control" id="" placeholder="Email"><br>
 					<input type="password" name="password" class="form-control" id="" placeholder="Password">
 				</div>
@@ -107,11 +105,11 @@
 <!-- </div> -->
 {% if app.session.has('logged')==false %}
 <!-- <div class="col-md-4 about-right heading"> -->
-{% if error is defined %}
-<div class="alert alert-warning" style="color:red">
-    {{error}}
-</div>
-{% endif %}
+    {% if error is defined %}
+    <div class="alert alert-warning" style="color:red">
+        {{error}}
+    </div>
+    {% endif %}
 <div class="abt-2">
 		<div class="abt-one">
 	<form action="/auth/register" method="POST" role="form" style="width: 80%; margin-left: 10%">

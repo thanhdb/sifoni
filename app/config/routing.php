@@ -5,6 +5,9 @@ return array(
         '/' => 'HomeController:index:home::get',
         '/store' => 'StoreController:index:store::get',
         '/store/detail/{id}' => 'StoreController:detail:detail_product::id',
+        '/store/cart' =>'StoreController:cart:cart::post',
+        '/store/cart/delete' => 'StoreController:delete:delete_cart::post',
+
         '/auth/login' => 'AuthController:login:loginuser::post',
         '/auth/logout' => 'AuthController:logout:logoutuser::get',
         '/auth/register' => 'AuthController:register:register::post'

@@ -18,7 +18,8 @@
     },
     "require-dev": {
         "symfony/browser-kit": "~2.7",
-        "symfony/css-selector": "~2.7"
+        "symfony/css-selector": "~2.7",
+        "symfony/var-dumper": "~2.7"
     },
     "extra": {
         "sifoni-app-dir": "app",

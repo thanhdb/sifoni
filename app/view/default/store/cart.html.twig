@@ -1,0 +1,153 @@
+{% extends 'default/layout/index.html.twig' %}
+{% block content %}
+{% 	set i=1 %}
+{%	set sum=0 %} 
+<style type="text/css">
+	input{
+		max-width: 100px;
+	}
+</style>
+
+			{% if app.session.get('product') is empty %}
+			<table class="table table-bordered">
+				<tr>
+						<td>Code</td>
+						<td>Name</td>
+						<td>Unit Price(USD)</td>
+						<td>Quantity</td>
+						<td>Prices(USD)</td>
+						<td>Action</td>
+					</tr>
+				<tr>
+					<td colspan="6">Chưa có món hàng nào</td>
+				</tr>
+			</table>
+					<a href="/store">
+						<button class="btn" style="background-color: #190608">Store</button>
+					</a>
+			{% else %}
+
+			<table class="table table-bordered">
+					<tr>
+						<td>Code</td>
+						<td>Name</td>
+						<td>Unit Price(USD)</td>
+						<td>Quantity</td>
+						<td>Prices(USD)</td>
+						<td>Action</td>
+					</tr>
+				<form id="formCart">
+					{% for value in app.session.get('product') %}
+					<tr id='row{{ value['id'] }}' >
+						<td>{{ i }}</td>{% set i=i+1 %}
+
+						<td><input style="background-color: #fff; border: 0" type="text" readonly type="text" name="name[{{ value['id'] }}]" value="{{ value['name'] }}"></td>
+
+						<td><input style="background-color: #fff; border: 0" type="text" readonly type="text" name="unit[{{ value['id'] }}]" value="{{value['price']}}"></td>
+						<td><input style="background-color: #fff; border: 0" type="text" readonly type="text" name="quantity[{{value['id']}}]" value="{{value['quantity']}}"></td>
+						{% set s = value['price'] * value['quantity'] %}
+						{% set sum = sum + s %}
+						<td>
+							<input style="background-color: #fff; border: 0"type="text" readonly id="price{{value['id']}}" name="prices[{{value['id']}}]" value="{{s}}">
+						</td>
+						<td>
+							<button type="button" class="btn btn-warning btn-delete-cart" data-id="{{value['id']}}">Delete</button>
+						</td>
+					</tr>
+					{% endfor %}
+					<tr>
+						<td colspan="4">Total: </td>
+						<td colspan="2">
+							<input style="background-color: #fff; border: 0" readonly id="sum" type="text" value="{{sum}}">
+						</td>
+					</tr>
+				</form>
+			</table>
+					<a href="/store">
+						<button class="btn" style="background-color: #190608; color:#337ab7">Store</button>
+					</a>
+					<!-- <div class="container"> -->
+					  <!-- Trigger the modal with a button -->
+					  <button class="btn" data-toggle="modal" data-target="#myModal" style="background-color: #190608; color:#337ab7" id="sumhd">Purchase</button>
+
+					  <!-- Modal -->
+					  	<div class="modal fade" id="myModal" role="dialog">
+					    <div class="modal-dialog">
+					    
+					      <!-- Modal content-->
+						    <div class="modal-content">
+						        <div class="modal-header">
+						          <button type="button" class="close" data-dismiss="modal">&times;</button>
+						          <h4 class="modal-title">Confirm your bill! Are you sure?</h4>
+						        </div>
+							        <div class="modal-body">
+										<span>Your name: {{app.session.get('logged')['name']}}</span><br>
+										<span>Your mail: {{app.session.get('logged')['email']}}</span><br>
+										<span id="total"></span><br>
+
+						        	</div>
+						        	<div class="modal-footer">
+								        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								        <button type="submit" class="btn btn-primary" id="confirm">Confirm</button>
+								    </div>
+						    </div>
+					    </div>
+					  </div>
+					  <div data-alerts="alerts" data-titles="{'warning': '<em>Successs!</em>'}" data-ids="myid" data-fade="3000"></div>
+					</div>
+
+			{% endif %}
+			</div>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('.btn-delete-cart').click(function(event) {
+			var btn = this;
+			var id = $(btn).data('id');
+			$('#sum').val( parseFloat($('#sum').val()) - parseFloat($('#price'+id).val()));
+
+			$.post('/store/cart/delete', {pid: id}, function(data) {
+				if (data == 'ok') {
+					$('#row' + id).remove();
+				} else {
+					console.log('Bi loi');
+				}
+			})
+		});
+
+		$('#sumhd').click(function(event){
+			$('#total').html('Total: $'+$('#sum').val());
+		});
+	});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#confirm').click(function(event){
+		var data = $('#formCart').serialize();
+		$.ajax({
+			url: 'index.php?c=payment&m=cart', 
+			type: 'POST',
+			dataType: 'text',
+			data: data,
+			success: function (status) {
+				if(status == 'true')
+				{
+				   alert('ĐI chỗ khác chơi!');
+				}
+				else
+				{
+					alert('Lỗi đã xảy ra!');
+				}
+			}
+		});
+
+	});
+		
+});
+	
+</script>
+
+  
+
+{% endblock %}
