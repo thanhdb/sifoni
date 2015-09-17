@@ -71,7 +71,7 @@
 					  <button class="btn" data-toggle="modal" data-target="#myModal" style="background-color: #190608; color:#337ab7" id="sumhd">Purchase</button>
 
 					  <!-- Modal -->
-					  	<div class="modal fade" id="myModal" role="dialog">
+					  	<div class="modal fade" id="myModal" role="dialog" style="display: block; padding-right: 17px;margin-left: 400px;width: 50%;">
 					    <div class="modal-dialog">
 					    
 					      <!-- Modal content-->
@@ -88,7 +88,7 @@
 						        	</div>
 						        	<div class="modal-footer">
 								        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-								        <button type="submit" class="btn btn-primary" id="confirm">Confirm</button>
+								        <button type="button" class="btn btn-primary" id="confirm" name="ozu">Confirm</button>
 								    </div>
 						    </div>
 					    </div>
@@ -126,14 +126,15 @@ $(document).ready(function(){
 	$('#confirm').click(function(event){
 		var data = $('#formCart').serialize();
 		$.ajax({
-			url: 'index.php?c=payment&m=cart', 
+			url: '/store/payment', 
 			type: 'POST',
 			dataType: 'text',
 			data: data,
 			success: function (status) {
+				// alert(status);
 				if(status == 'true')
 				{
-				   alert('ĐI chỗ khác chơi!');
+				   alert('Đơn hàng đã được gửi đi!');
 				}
 				else
 				{

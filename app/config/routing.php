@@ -7,6 +7,7 @@ return array(
         '/store/detail/{id}' => 'StoreController:detail:detail_product::id',
         '/store/cart' =>'StoreController:cart:cart::post',
         '/store/cart/delete' => 'StoreController:delete:delete_cart::post',
+        '/store/payment' => 'StoreController:payment:payment::post',
 
         '/auth/login' => 'AuthController:login:loginuser::post',
         '/auth/logout' => 'AuthController:logout:logoutuser::get',

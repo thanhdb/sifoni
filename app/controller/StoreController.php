@@ -4,14 +4,12 @@ namespace App\Controller;
 
 use Sifoni\Controller\Base;
 use App\Model\Product;
+use App\Model\Payment;
 // use App\Model\Post;
 
 class StoreController extends Base {
     public function indexAction() {
         $data['title']='Coffee Break';
-        // $data['menu'] = Menu::where('status',1)->get();
-        // $data['post'] =Post::where('status',1)->get();
-		// $data['content'] = model('content')->all();
 		$data['product'] = Product::all();
         return $this->render('default/store/index.html.twig', $data);
     }
@@ -19,9 +17,7 @@ class StoreController extends Base {
     public function detailAction($id)
     {
     	$data['title'] = 'Coffee Break';
-
     	$data['detail'] = Product::where('id','=',$id)->get()[0];
-    	
     	return $this->render('default/store/detail.html.twig',$data);
     }
 
@@ -46,7 +42,6 @@ class StoreController extends Base {
            
             $this->app['session']->set('product',$products);
         }
-        // dump($this->app['session']->get('product'));
         return $this->render('default/store/cart.html.twig',$data);
     }
 
@@ -62,6 +57,32 @@ class StoreController extends Base {
         }
         $this->app['session']->set('product',$products);
         return 'ok';
+    }
+
+    public function paymentAction()
+    {
+       
+        $user_id = $this->app['session']->get('logged')['id'];
+
+        $paid_day = date("Y-m-d");
+        if( $postData = $this->getPostData())
+        {
+            foreach ($postData['name'] as $key => $value) 
+            {
+                $payment = new Payment([
+                    'user_id'       => $user_id, 
+                   'product_id'    => $key,
+                   'product_name'  => $postData['name'][$key],
+                   'quantity'      => $postData['quantity'][$key],
+                   'prices'        => $postData['prices'][$key],
+                   'paid_day'      => $paid_day
+                ]);
+                $payment->save();
+            }
+            // echo "<pre";
+            // print_r($this->app['session']->get('logged')['id']);
+            return 'true';
+        }
     }
     
 }

@@ -25,22 +25,17 @@ class User extends Base {
 
 	public function authRegister($postData) 
 	{
-        // $user = static::getOneBy($postData['email'], 'email');
         $ok = User::where('email', '=', $postData['email'])->get();
         if (isset($ok[0]) ) 
         {
-        	
             return false;
         } 
         else 
         {
-
             $postData['password'] = md5($postData['password']);
 
             User::insert($postData);
             unset($postData['password']);
-            // $postData['id'] = $user_id;
-            // $_SESSION['logged'] = $postData;
             return $postData;
         }
     }
