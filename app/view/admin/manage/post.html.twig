@@ -1,0 +1,68 @@
+{% extends 'admin/layout/index.html.twig' %}
+
+{% block content %}
+	{% if app.session.has('adminName') %}
+	<table class="table table-bordered table-hover" style="margin-top: 10px">
+		<a href="/admin/post/add">
+			<button type="button" class="btn btn-success btn-sm" style="margin: 10px">Thêm bài viết</button>
+		</a>
+			<tr>
+				<td>Post's ID</td>
+				<td>Title</td>
+				<td>Description</td>
+				<td>Content</td>
+				<td>Write time</td>
+				<td>Action</td>
+			</tr>
+			
+			{% for content in contents %}
+			<tr>
+				<td>{{ content['id'] }}</td>
+				<td>{{ content['title'] }}</td>
+				<td>{{ content['description'] }}</td>
+				<td>{{ content['content'] }}</td>
+				<td>{{ content['write_time'] }}</td>
+				<td>
+					<button type="button" class="btn btn-info btn-sm">Edit</button>
+  					<button type="button" class="btn btn-danger btn-sm del_post" id="{{ content['id'] }}">Delete</button>
+				</td>
+			</tr>
+			{% endfor %}
+	</table>
+
+	{% endif %}
+
+<script type="text/javascript">
+	$( document ).ready(function() {
+	  $('.del_post').click(function(event) {
+	  	var post_id = $(this).prop('id');
+	  	$('#myModal').modal({
+	        show: 'true'
+	    });
+	  	$('#yes').click(function(event) {
+	  		window.location.replace('/admin/post/delete/'+post_id);
+	  	});
+	  });
+	  
+	});
+</script>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Confirm</h4>
+        </div>
+        <div class="modal-body">
+          <p>Do you wanna delete this post?</p>
+        </div>
+        <div class="modal-footer">
+        	<button type="button" class="btn btn-success" data-dismiss="modal" id="yes">Yes</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

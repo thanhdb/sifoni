@@ -11,6 +11,8 @@
 	<link rel="stylesheet" href="/styles/admin/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="/styles/admin/css/font-awesome.min.css" />
 	<script src="/styles/admin/js/jquery.min.js"></script>
+	<script type="text/javascript" src="/scripts/ckeditor/ckeditor.js"></script>
+
 	<!-- page specific plugin styles -->
 	<link rel="stylesheet" href="/styles/admin/css/fullcalendar.css" />
 	<link rel="stylesheet" href="/styles/admin/css/jquery-ui.custom.min.css" />
@@ -54,7 +56,14 @@
 <script src="/styles/admin/js/respond.min.js"></script>
 <![endif]-->
 <link rel="stylesheet" href="/styles/admin/css/more.css" />
+<style type="text/css">
+	body{
 
+	}
+	h3{
+
+	}
+</style>
 </head>
 <body class="no-skin">
 	<div id="navbar" class="navbar navbar-default">
@@ -88,7 +97,9 @@
 						<a data-toggle="dropdown" href="index.html#" class="dropdown-toggle">
 							<span class="user-info">
 								<small>Welcome,</small>
-								{{fullname}}
+								{# {{fullname}} #}
+
+								{{ app.session.get('adminName') }}
 							</span>
 
 							<i class="ace-icon fa fa-caret-down"></i>
@@ -220,10 +231,6 @@ if('ontouchstart' in document.documentElement) document.write("<script src='/sty
 <script src="/styles/admin/js/ace-elements.min.js"></script>
 <script src="/styles/admin/js/ace.min.js"></script>
 <script src="/styles/admin/js/alert.js"></script>
-<script type="text/javascript" src="/scripts/ckfinder/ckfinder.js"></script>
-<script type="text/javascript" src="/scripts/ckeditor/ckeditor.js"></script>
-<script type="text/javascript" src="/scripts/ckeditor/jqueryeditor.js"></script>
-<script type="text/javascript" src="/scripts/editor.js"></script>
 <script src="/styles/admin/js/javascript.lib.js"></script>
 
 </body>

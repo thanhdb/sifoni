@@ -20,9 +20,16 @@ return array(
     ),
     '/admin' => array(
         '/' => 'admin\AdminController:index:admin::get',
-        // '/home.html'=>'admin\AdminController:home:adminhome::get',
+        '/home.html'=>'admin\AdminController:home:adminhome::get',
         '/login.html'=>'admin\AuthController:index:loginadmin::post',
-        // '/logout.html'=>'admin\AuthController:logout:logoutadmin::post',
+        '/logout.html'=>'admin\AuthController:logout:logoutadmin::post',
+
+        '/user' => 'admin\AdminController:user:user_manager::post',
+        '/user/delete/{id}' => 'admin\AdminController:userDel:delete_user::id',
+
+        '/post' => 'admin\AdminController:post:post_manager::post',
+        '/post/delete/{id}' => 'admin\AdminController:postDel:delete_post::id',
+        '/post/add' => 'admin\AdminController:postAdd:add_post::post'
         // '/category.html'=>'admin\CategoryController:index:list_category::post',
     )
 );

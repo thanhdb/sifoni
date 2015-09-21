@@ -1,0 +1,35 @@
+{% extends 'admin/layout/index.html.twig' %}
+{% block content %}
+	<div class="container">
+	<form name="addpost" action="/admin/post/add" method="POST" role="form">
+                <legend>Thêm bài viết</legend>
+            
+                <div class="form-group">
+                    <label for="">Title</label>
+                    <input name="title" type="text" class="form-control" id="">
+                    <label for="">Description</label>
+                    <input name="description" type="text" class="form-control" id="">
+                    <label for="">Content</label>
+                    <textarea name="content" id="content" class="form-control ckeditor" rows="3"></textarea>
+                    <label>Time</label>
+                    <input type="date" name="write_time" class="form-control" style="max-width: 30%">
+                </div>
+                
+                    <!-- <script>
+                        // Replace the <textarea id="editor1"> with a CKEditor
+                        // instance, using default configuration.
+                        CKEDITOR.replace( 'content',{
+                            toolbarCanCollapse: true,
+                         	filebrowserBrowseUrl: 		'/scripts/kcfinder/browse.php?opener=ckeditor&type=files',
+                    							filebrowserImageBrowseUrl: 	'/scripts/kcfinder/browse.php?opener=ckeditor&type=images',
+                    							filebrowserFlashBrowseUrl: 	'/scripts/kcfinder/browse.php?opener=ckeditor&type=flash',
+                    							filebrowserUploadUrl: 		'/scripts/kcfinder/upload.php?opener=ckeditor&type=files',
+                    							filebrowserImageUploadUrl: 	'/scripts/kcfinder/upload.php?opener=ckeditor&type=images',
+                    							filebrowserFlashUploadUrl: 	'/scripts/kcfinder/upload.php?opener=ckeditor&type=flash'
+                    
+                        } );
+                    </script> -->
+                <button type="submit" class="btn btn-primary">Save</button>
+            </form>
+       </div>
+{% endblock %}

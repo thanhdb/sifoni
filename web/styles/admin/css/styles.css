@@ -20,3 +20,10 @@
 	font-family: serif;
 	margin-bottom: 10px;
 }
+
+#fadeandscale {
+  transform: scale(0.8);
+}
+.popup_visible #fadeandscale {
+  transform: scale(1);
+}

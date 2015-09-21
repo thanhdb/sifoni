@@ -81,6 +81,7 @@ class StoreController extends Base {
             }
             // echo "<pre";
             // print_r($this->app['session']->get('logged')['id']);
+            // $this->app['session']->remove('product');
             return 'true';
         }
     }
