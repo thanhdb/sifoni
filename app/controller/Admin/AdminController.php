@@ -61,6 +61,15 @@ class AdminController extends Base
         if($this->isPostRequest())
         {
             $postData = $this->getPostData();
+            if($postData['slug']=='')
+            {
+                $postData['slug'] = $this->app['slugify']->slugify($postData['title']);
+            }
+            else
+            {
+                $postData['slug'] = $this->app['slugify']->slugify($postData['slug']);
+
+            }
             Content::insert($postData);
 
             return $this->redirect('post_manager');

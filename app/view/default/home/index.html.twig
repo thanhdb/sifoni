@@ -27,9 +27,11 @@
 					</div>	
 					<div class="about-tre">
 						<div class="a-1">
+
 						{% for cont in content %}
+
 							<div class="col-md-6 abt-left">
-								<a href="index.php?c=index&m=showpost&id={{ cont['id'] }}"><img src="{{ cont['images'] }}" style="width: 350px; height: 250px" /></a>
+								<a href="/post/show/{{ cont['id'] }}"><img src="" style="width: 350px; height: 250px" /></a>
 								<h6>Find The Most</h6>
 								<h3><a href="#">{{ cont['title'] }}</a></h3>
 								<p>{{ cont['description'] }}</p>

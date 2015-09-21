@@ -14,10 +14,10 @@ class StoreController extends Base {
         return $this->render('default/store/index.html.twig', $data);
     }
 
-    public function detailAction($id)
+    public function detailAction($slug)
     {
     	$data['title'] = 'Coffee Break';
-    	$data['detail'] = Product::where('id','=',$id)->get()[0];
+    	$data['detail'] = Product::where('slug','=',$slug)->get()[0];
     	return $this->render('default/store/detail.html.twig',$data);
     }
 
